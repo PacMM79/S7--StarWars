@@ -6,10 +6,14 @@ import { BehaviorSubject, map, Observable, switchMap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private loggedIn = new BehaviorSubject<boolean>(false);
+  private loggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('jwtToken'));
   private jwtToken = '';
   username = '';
   isLoggedIn$ = this.loggedIn.asObservable();
+
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
 
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('jwtToken');
@@ -40,10 +44,6 @@ export class AuthService {
     return this.http
       .post<any>(`http://localhost:3000/register`, credentials)
       .pipe(switchMap(() => this.login(credentials)));
-  }
-
-  isLoggedIn(): boolean {
-    return this.loggedIn.getValue();
   }
 
   get getJwtToken(): string {

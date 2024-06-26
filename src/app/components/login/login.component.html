@@ -2,12 +2,12 @@
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <h2 class="text-center mt-3">LOGIN</h2>
     <div class="form-group p-3">
-      <label for="email">Email:</label>
+      <label for="emailInput">Email:</label>
       <input type="text" formControlName="email" id="emailInput" class="form-control" required />
       <div class="invalid-feedback">Please, add your email.</div>
     </div>
     <div class="form-group p-3">
-      <label for="password">Password:</label>
+      <label for="passInput">Password:</label>
       <input type="password" formControlName="password" id="passInput" class="form-control" required />
       <div class="invalid-feedback">Please, add your password.</div>
     </div>
@@ -25,5 +25,6 @@
     New user? Please, register
     <a class="underline" [routerLink]="['/register']"> here</a>
   </div>
+  <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
 
 </div>

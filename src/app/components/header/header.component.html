@@ -31,13 +31,18 @@
     </div>
 
     <div class="login">
-      <a [routerLink]="['login']" class="login-link">
-        <img src="assets/img/login/login-icon.png" alt="Login" class="login-logo" title="Login ">
+      <a *ngIf="!(isLoggedIn$ | async)" [routerLink]="['/login']" class="login-link" title="Login">
+        <img src="assets/img/login/login-icon.png" alt="Login" class="login-logo" title="Login">
         <b>LOGIN</b>
       </a>
+
+      <a *ngIf="isLoggedIn$ | async" (click)="logout()" class="login-link logout" title="Logout">
+        <img src="assets/img/login/logout-icon.png" alt="Logout" class="login-logo" title="Logout">
+        <b>LOGOUT</b>
+      </a>
       //
-      <a [routerLink]="['register']" class="login-link">
-        <img src="assets/img/login/register-icon.png" alt="Login" class="login-logo">
+      <a [routerLink]="['register']" class="login-link" title="Signup">
+        <img src="assets/img/login/register-icon.png" alt="Signup" class="login-logo" title="Signup">
         <b>SIGNUP</b>
       </a>
     </div>

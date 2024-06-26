@@ -64,3 +64,7 @@ a:hover {
   transform: scale(1.2);
   filter: brightness(0) saturate(100%) invert(78%) sepia(97%) saturate(344%) hue-rotate(345deg) brightness(99%) contrast(97%);
 }
+
+.logout {
+  cursor: pointer;
+}

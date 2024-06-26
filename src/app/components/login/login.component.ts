@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
@@ -6,13 +7,14 @@ import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, RouterLink],
+  imports: [ReactiveFormsModule, FormsModule, RouterLink, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
+  isLoggedIn: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -24,6 +26,10 @@ export class LoginComponent {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
+    });
+
+    this.authService.isLoggedIn.subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
     });
   }
 
@@ -65,5 +71,10 @@ export class LoginComponent {
         console.log('Login observable completed');
       },
     });
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

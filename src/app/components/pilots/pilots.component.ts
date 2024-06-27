@@ -20,7 +20,6 @@ export class PilotsComponent {
     if (this.pilots) {
       this.pilotsData$ = this.service.getPilotsDetails(this.pilots);
     }
-    console.log(this.pilots);
   }
 
   getPicture(url: string) {

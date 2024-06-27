@@ -20,7 +20,6 @@ export class FilmsComponent {
     if (this.films) {
       this.filmsData$ = this.service.getFilmsDetails(this.films);
     }
-    console.log(this.films);
   }
 
   getPicture(url: string) {

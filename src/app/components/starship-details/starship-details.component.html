@@ -1,16 +1,16 @@
 @if(starship$ | async; as starship) {
 <div class="card-body shiplist">
-    <h1 class="animate-character p-3"><b>STARSHIP</b></h1>
-    <div class="card col-10 col-md-9 col-lg-10 p-5 pt-0">
+    <h1 class="p-3"><b>STARSHIP</b></h1>
+    <div class="card col-11 col-md-9 col-lg-8 col-xl-11 col-xxl-8 p-5 pt-0">
         <div class="card-title pt-3">
-            <h2 class="pt-3"><b>{{ starship.name }}</b></h2><br>
+            <h2 class="pt-3"><b>{{ starship.name }}</b></h2>
         </div>
         <div class="row align-items-center">
-            <div class="col-12 col-xl-6 col-xxl-6 text-center mt-4">
+            <div class="col-12 col-xl-7 col-xxl-7 text-center mt-4 mb-4 card-custom">
                 <img [src]="starshipImageUrl" alt="{{ starship.name }}" class="img-fluid starship" />
             </div>
-            <div class="col-12 col-xl-6 col-xxl-6">
-                <ul class="mb-0 m-4">
+            <div class="col-12 col-xl-5 col-xxl-5">
+                <ul class="m-0">
                     <li><p class="card-text"><b>Model:</b> {{ starship.model }}</p></li>
                     <li><p class="card-text"><b>Class:</b> {{ starship.starship_class }}</p></li>
                     <li><p class="card-text"><b>Manufacturer:</b> {{ starship.manufacturer }}</p></li>
@@ -25,20 +25,16 @@
               </ul>
             </div>
         </div>
-
         @if(starship$ | async; as starship) {
           <app-pilots [pilots]="starship.pilots"></app-pilots>
           <app-films [films]="starship.films"></app-films>
         }
-
         <div class="more">
             <a href="/starships"><button class="btn btn-light">Return to Starships</button></a>
         </div>
     </div>
 </div>
-
 }
-
 <div *ngIf="loading" class="loader">
     <div class="text-center">
         <div class="spinner-border" role="status"></div>

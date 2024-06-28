@@ -12,6 +12,7 @@
     margin: 10px;
     background-color: rgba(34, 34, 34, 0.5);
     color: white;
+    border-radius: 20px;
 }
 
 .card-title {
@@ -20,6 +21,11 @@
 
 p {
     font-size: 1.3rem;
+}
+
+li b {
+  color: #fade4b;
+  font-weight: 400;
 }
 
 button {
@@ -36,5 +42,13 @@ button {
 }
 
 .starship:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
+}
+
+.card-custom img {
+  border-radius: 20px;
+}
+
+li {
+  list-style: none;
 }

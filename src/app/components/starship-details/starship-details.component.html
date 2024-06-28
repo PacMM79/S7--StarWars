@@ -1,15 +1,15 @@
 @if(starship$ | async; as starship) {
 <div class="card-body shiplist">
     <h1 class="animate-character p-3"><b>STARSHIP</b></h1>
-    <div class="card col-lg-8 col-md-9 col-10 p-5 pt-0">
+    <div class="card col-10 col-md-9 col-lg-10 p-5 pt-0">
         <div class="card-title pt-3">
             <h2 class="pt-3"><b>{{ starship.name }}</b></h2><br>
         </div>
         <div class="row align-items-center">
-            <div class="col-12 col-xxl-6 text-center mt-4">
+            <div class="col-12 col-xl-6 col-xxl-6 text-center mt-4">
                 <img [src]="starshipImageUrl" alt="{{ starship.name }}" class="img-fluid starship" />
             </div>
-            <div class="col-12 col-xxl-6">
+            <div class="col-12 col-xl-6 col-xxl-6">
                 <ul class="mb-0 m-4">
                     <li><p class="card-text"><b>Model:</b> {{ starship.model }}</p></li>
                     <li><p class="card-text"><b>Class:</b> {{ starship.starship_class }}</p></li>
@@ -41,9 +41,7 @@
 
 <div *ngIf="loading" class="loader">
     <div class="text-center">
-        <div class="spinner-border" role="status">
-            <img src="../assets/img/loader_empire.png" class="loader-ico">
-        </div>
+        <div class="spinner-border" role="status"></div>
         <span class="loader mt-4">Loading...</span>
     </div>
 </div>

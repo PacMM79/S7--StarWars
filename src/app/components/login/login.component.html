@@ -25,6 +25,6 @@
     New user? Please, register
     <a class="underline" [routerLink]="['/register']"> here</a>
   </div>
-  <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+  <button *ngIf="isLoggedIn" (click)="logout()" class="btn btn-light">Logout</button>
 
 </div>

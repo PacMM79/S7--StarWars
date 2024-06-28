@@ -1,12 +1,16 @@
-.jetbrains-mono-jet {
-  font-family: "JetBrains Mono", monospace;
-  font-optical-sizing: auto;
-  font-weight: 300;
+@font-face {
+  font-family: DINNext;
+  font-weight: 400;
   font-style: normal;
+  font-display: swap;
+  src: url('https://static-mh.content.disney.io/matterhorn/assets/drm_fonts/da088ecc-a53c-4831-a95b-6fd81b5b338a-3c1b11e7ebfa.eot?#iefix')  format('embedded-opentype'),
+       url('https://static-mh.content.disney.io/matterhorn/assets/drm_fonts/c5a7f89e-15b6-49a9-8259-5ea665e72191-9d1e641a0ccf.woff') format('woff'),
+       url('https://static-mh.content.disney.io/matterhorn/assets/drm_fonts/868c94b5-ca49-46b7-b62b-297f8d861125-0b3e4fad0ff7.ttf') format('truetype'),
+       url('https://static-mh.content.disney.io/matterhorn/assets/drm_fonts/e3145f65-29b5-4f7f-8c6e-2dc135021b6a-64578eb1dd67.svg#DINNext') format('svg');
 }
 
 * {
-  font-family: 'JetBrains Mono';
+  font-family: 'DINNext';
 }
 
 body {
@@ -20,7 +24,7 @@ p {
 }
 
 b {
-  font-weight: 900;
+  font-weight: 600;
 }
 
 h2 {
@@ -32,8 +36,8 @@ h2 {
   background-image: linear-gradient(
   -250deg,
   white 0,
-  white 65%,
-  #fade4b 100%
+  #fade4b 65%,
+  white 100%
   );
 
   background-size: 200% auto;

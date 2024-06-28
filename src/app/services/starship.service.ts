@@ -34,4 +34,25 @@ export class StarshipService {
     }
     return combineLatest(filmDetails$);
   }
+
+  private getPicture(url: string): string {
+    const id = url.split('/')[5];
+    return `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
+  }
+
+  getStarshipImage(url: string, callback: (imageUrl: string) => void): void {
+    const imageUrl = this.getPicture(url);
+    const placeholderUrl = 'assets/img/error-placeholder.jpg';
+
+    const img = new Image();
+    img.src = imageUrl;
+
+    img.onload = () => {
+      callback(imageUrl);
+    };
+
+    img.onerror = () => {
+      callback(placeholderUrl);
+    };
+  }
 }

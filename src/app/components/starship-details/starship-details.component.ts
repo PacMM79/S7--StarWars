@@ -6,7 +6,6 @@ import { StarshipService } from '../../services/starship.service';
 import { PilotsComponent } from '../pilots/pilots.component';
 import { FilmsComponent } from '../films/films.component';
 
-
 @Component({
   selector: 'app-starship-details',
   standalone: true,
@@ -25,31 +24,21 @@ export class StarshipDetailsComponent {
   ngOnInit(): void {
     this.loading = true;
     this.starship$ = this.starshipService.getStarshipById(this.id).pipe(
-      tap(() => (this.loading = false)),
-      map((starship) => {
-        this.loadStarhipImage(starship.url);
+      tap(() => this.loading = false),
+      map(starship => {
+        this.loadStarshipImage(starship.url);
         return starship;
       })
     );
   }
 
-  getPicture(url: string): string {
-    const id = url.split('/')[5];
-    return `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
+  loadStarshipImage(url: string): void {
+    this.starshipService.getStarshipImage(
+      url,
+      (imageUrl) => {
+        this.starshipImageUrl = imageUrl;
+      }
+    );
   }
 
-  loadStarhipImage(url: string): void {
-    const imageUrl = this.getPicture(url);
-
-    const img = new Image();
-    img.src = imageUrl;
-
-    img.onload = () => {
-      this.starshipImageUrl = imageUrl;
-    };
-
-    img.onerror = () => {
-      this.starshipImageUrl = 'assets/img/error-placeholder.jpg';
-    };
-  }
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Observable, map, tap } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { StarshipService } from '../../services/starship.service';
 import { StarshipList, Starship } from '../../interfaces/starship';
@@ -17,6 +16,7 @@ export class StarshipListComponent {
   currentPage: number = 1;
   starships: Starship[] = [];
   next: string | null = null;
+
   constructor(private service: StarshipService) {}
 
   ngOnInit(): void {
@@ -27,6 +27,11 @@ export class StarshipListComponent {
     this.loading = true;
     this.service.getStarshipsList(this.currentPage).subscribe({
       next: (response: StarshipList) => {
+        response.results.forEach(starship => {
+          this.getStarshipImage(starship.url, (imageUrl) => {
+            starship.imageUrl = imageUrl;
+          });
+        });
         this.starships = [...this.starships, ...response.results];
         this.next = response.next;
         this.loading = false;
@@ -42,5 +47,9 @@ export class StarshipListComponent {
       this.currentPage++;
       this.loadStarships();
     }
+  }
+
+  getStarshipImage(url: string, callback: (imageUrl: string) => void): void {
+    this.service.getStarshipImage(url, callback);
   }
 }

@@ -4,7 +4,7 @@ import { inject } from '@angular/core';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
-  const isLoggedIn = authService.isLoggedIn();
+  const isLoggedIn = authService.isLoggedIn$;
   const authRequest =
     isLoggedIn &&
     req.clone({

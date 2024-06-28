@@ -41,10 +41,13 @@
         <b>LOGOUT</b>
       </a>
       //
-      <a [routerLink]="['register']" class="login-link" title="Signup">
+      <a *ngIf="!(isLoggedIn$ | async)" [routerLink]="['register']" class="login-link" title="Signup">
         <img src="assets/img/login/register-icon.png" alt="Signup" class="login-logo" title="Signup">
         <b>SIGNUP</b>
       </a>
+
+      <b>{{ username$ | async }}</b>
+
     </div>
   </nav>
 

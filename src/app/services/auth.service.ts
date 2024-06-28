@@ -8,12 +8,10 @@ import { BehaviorSubject, map, Observable, switchMap } from 'rxjs';
 export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('jwtToken'));
   private jwtToken = '';
-  username = '';
-  isLoggedIn$ = this.loggedIn.asObservable();
+  private username = new BehaviorSubject<string>(localStorage.getItem('username') || '');
 
-  get isLoggedIn() {
-    return this.loggedIn.asObservable();
-  }
+  isLoggedIn$ = this.loggedIn.asObservable();
+  username$ = this.username.asObservable();
 
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('jwtToken');
@@ -21,42 +19,36 @@ export class AuthService {
       this.jwtToken = token;
       this.loggedIn.next(true);
     }
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      this.username = storedUsername;
-    }
   }
 
-  login(credentials: any) {
+  login(credentials: any): Observable<boolean> {
     return this.http.post<any>(`http://localhost:3000/login`, credentials).pipe(
       map((response) => {
         this.jwtToken = response.accessToken;
-        this.username = response.user.username;
+        const username = response.user.username;
         this.loggedIn.next(true);
+        this.username.next(username);
         localStorage.setItem('jwtToken', this.jwtToken);
-        localStorage.setItem('username', this.username);
+        localStorage.setItem('username', username);
         return true;
       })
     );
   }
 
   register(credentials: any): Observable<boolean> {
-    return this.http
-      .post<any>(`http://localhost:3000/register`, credentials)
-      .pipe(switchMap(() => this.login(credentials)));
+    return this.http.post<any>(`http://localhost:3000/register`, credentials).pipe(
+      switchMap(() => this.login(credentials))
+    );
   }
 
   get getJwtToken(): string {
     return this.jwtToken;
   }
 
-  get getUsername(): string {
-    return this.username;
-  }
-
-  logout() {
+  logout(): void {
     this.jwtToken = '';
     this.loggedIn.next(false);
+    this.username.next('');
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('username');
   }

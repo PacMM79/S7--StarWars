@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Observable } from 'rxjs';
@@ -12,13 +12,16 @@ import { LoginComponent } from '../login/login.component';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
-  authService = inject(AuthService);
+export class HeaderComponent implements OnInit{
   router = inject(Router);
   isLoggedIn$!: Observable<boolean>;
+  username$!: Observable<string>;
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
+    this.username$ = this.authService.username$;
   }
 
   logout() {

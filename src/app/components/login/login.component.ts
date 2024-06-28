@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
 
-    this.authService.isLoggedIn.subscribe((loggedIn) => {
+    this.authService.isLoggedIn$.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
   }

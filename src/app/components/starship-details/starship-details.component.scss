@@ -1,8 +1,14 @@
-.shiplist {
+.shiplist,
+.loader,
+.more {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 3%;
+}
+
+.loader-ico {
+    margin: -25px;
 }
 
 .card {

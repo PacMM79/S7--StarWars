@@ -1,13 +1,13 @@
-@if(starshipList$ | async; as starshipList) {
+@if(starships) {
 <div class="card-body shiplist">
   <h1 class="animate-character"><b>STARSHIPS</b></h1>
 
-  @for(starship of starshipList.results; track starship.name) {
+  @for(starship of starships; track starship.name) {
 
   <div class="card col-xxl-4 col-lg-6 col-md-8 col-10">
     <h5 class="card-title">
       <b>
-        <h3 class="animate mb-0">
+        <h3 class="animate m-1">
           <a [routerLink]="['/starship', starship.url.split('/').slice(-2, -1)[0]]">
             {{ starship.name }}
           </a>
@@ -21,3 +21,14 @@
 
 </div>
 }
+<div *ngIf="loading" class="loader">
+  <div class="text-center">
+    <div class="spinner-border" role="status">
+      <img src="../assets/img/loader_empire.png" class="loader-ico">
+    </div>
+    <span class="loader mt-4">Loading...</span>
+  </div>
+</div>
+<div class="more">
+  <button (click)="onViewMore()" *ngIf="!loading && next" class="btn btn-light">View More</button>
+</div>

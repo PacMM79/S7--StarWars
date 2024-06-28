@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { Observable, map, tap } from 'rxjs';
 import { Starship } from '../../interfaces/starship';
 import { StarshipService } from '../../services/starship.service';
-import { CommonModule } from '@angular/common';
-import { map, tap, catchError  } from 'rxjs';
+
 
 @Component({
   selector: 'app-starship-details',

@@ -1,17 +1,23 @@
 @if(starshipList$ | async; as starshipList) {
+<div class="card-body shiplist">
+  <h1 class="animate-character"><b>STARSHIPS</b></h1>
 
-    <div class="card-body shiplist">
-        <h1 class="animate-character"><b>STARSHIPS</b></h1>
+  @for(starship of starshipList.results; track starship.name) {
 
-      @for(starship of starshipList.results; track starship.name) {
+  <div class="card col-xxl-4 col-lg-6 col-md-8 col-10">
+    <h5 class="card-title">
+      <b>
+        <h3 class="animate mb-0">
+          <a [routerLink]="['/starship', starship.url.split('/').slice(-2, -1)[0]]">
+            {{ starship.name }}
+          </a>
+        </h3>
+      </b>
+    </h5>
+    <p class="card-text"><b>Model:</b> {{ starship.model }}</p>
+  </div>
 
-        <div class="card col-lg-6 col-md-8 col-10">
-            <h5 class="card-title"><b>{{ starship.name }}</b></h5>
-            <p class="card-text"><b>Class:</b> {{ starship.model }}</p>
-        </div>
-        
-      }
+  }
 
-    </div>
-    }
-  
+</div>
+}

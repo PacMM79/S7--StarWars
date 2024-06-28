@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { RouterLink } from '@angular/router';
 import { StarshipService } from '../../services/starship.service';
 import { StarshipList } from '../../interfaces/starship';
 
@@ -9,7 +10,7 @@ import { StarshipList } from '../../interfaces/starship';
   templateUrl: './starship-list.component.html',
   styleUrl: './starship-list.component.scss',
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, RouterLink]
 })
 export class StarshipListComponent {
   public starshipList$!: Observable<StarshipList>;

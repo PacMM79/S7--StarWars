@@ -1,0 +1,24 @@
+@if(starship$ | async; as starship) {
+<div class="card-body shiplist">
+    <h1 class="animate-character p-3"><b>STARSHIP</b></h1>
+    <div class="card col-lg-8 col-md-9 col-10">
+        <div class="card-title p-3">
+            <h2 class="animate-character p-3">{{ starship.name }}</h2><br>
+            <img [src]="starshipImageUrl" alt="{{ starship.name }}" class="img-fluid"/>
+        </div>
+        <ul>
+        <li><p class="card-text mt-3"><b>Model:</b> {{ starship.model }}</p></li>
+        <li><p class="card-text"><b>Class:</b> {{ starship.starship_class }}</p></li>
+        <li><p class="card-text"><b>Manufacturer:</b> {{ starship.manufacturer }}</p></li>
+        <li><p class="card-text"><b>Cost in Credits:</b> {{ starship.cost_in_credits }}</p></li>
+        <li><p class="card-text"><b>Length:</b> {{ starship.length }}</p></li>
+        <li><p class="card-text"><b>Crew:</b> {{ starship.crew }}</p></li>
+        <li><p class="card-text"><b>Passengers:</b> {{ starship.passengers }}</p></li>
+        <li><p class="card-text"><b>Cargo Capacity:</b> {{ starship.cargo_capacity }}</p></li>
+        <li><p class="card-text"><b>Consumables:</b> {{ starship.consumables }}</p></li>
+        <li><p class="card-text"><b>Hyperdrive Rating:</b> {{ starship.hyperdrive_rating }}</p></li>
+        <li><p class="card-text"><b>MGLT:</b> {{ starship.MGLT }}</p></li>
+        </ul>
+    </div>
+</div>
+}

@@ -68,7 +68,7 @@ export class RegisterComponent {
         this.router.navigate(['/']);
       },
       error: (error) => {
-        this.errorMessage = 'Invalid username or password';
+        this.errorMessage = 'Email already registered';
         console.error('Login error:', error);
       },
       complete: () => {

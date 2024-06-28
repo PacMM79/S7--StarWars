@@ -1,0 +1,17 @@
+@if(starshipList$ | async; as starshipList) {
+
+    <div class="card-body shiplist">
+        <h1 class="animate-character"><b>STARSHIPS</b></h1>
+
+      @for(starship of starshipList.results; track starship.name) {
+
+        <div class="card col-lg-6 col-md-8 col-10">
+            <h5 class="card-title"><b>{{ starship.name }}</b></h5>
+            <p class="card-text"><b>Class:</b> {{ starship.model }}</p>
+        </div>
+        
+      }
+
+    </div>
+    }
+  

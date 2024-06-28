@@ -1,0 +1,42 @@
+.shiplist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3%;
+}
+.card {
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(34, 34, 34);
+    color: white;
+    transition: transform 0.5s ease-in-out;
+}
+
+.card:hover {
+    background-color: yellow;
+    color: black;
+    transform: scale(1.1);
+}
+
+.animate-character {
+    background-image: linear-gradient(
+    -250deg,
+    white 0%,
+    white 75%,
+    yellow 100%
+    );
+  
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 4s linear infinite;
+    animation-direction: reverse;
+    display: inline-block;
+  }
+  
+  @keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+  }

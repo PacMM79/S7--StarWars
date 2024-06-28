@@ -1,0 +1,50 @@
+.social-links ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.social-links li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-link img {
+  max-height: 20px;
+}
+
+.navbar-custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding: 5px;
+}
+
+.logo-center {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.login-logo {
+  height: 15px;
+  margin-top: -3px;
+  margin-right: 5px;
+}
+
+.logosw {
+  height: 100px;
+}
+
+.login-link img,
+.social-link img,
+.logosw {
+  transition: transform 0.5s ease, color 0.3s ease;
+}
+
+.login-link:hover img,
+.social-link img:hover,
+.logosw:hover {
+  transform: scale(1.3);
+  filter: brightness(0) saturate(100%) invert(95%) sepia(40%) saturate(1773%) hue-rotate(7deg) brightness(110%) contrast(108%);
+}

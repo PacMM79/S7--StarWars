@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+.jetbrains-mono-jet {
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+* {
+  font-family: 'JetBrains Mono';
+}
+
+body {
+  background-color: black;
+  background-image: url('../public/assets/img/black-background.jpg');
+  background-size: cover;
+  color: white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffff00;
+}

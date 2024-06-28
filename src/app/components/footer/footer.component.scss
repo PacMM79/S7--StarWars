@@ -1,0 +1,28 @@
+.footer {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.social-links ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+  
+.social-links li {
+    display: inline-block;
+    margin-right: 10px;
+}
+  
+.social-link img {
+    max-height: 25px;
+}
+
+.social-link img {
+  transition: transform 0.5s ease, color 0.3s ease;
+}
+
+.social-link img:hover {
+  transform: scale(1.2);
+  filter: brightness(0) saturate(100%) invert(78%) sepia(97%) saturate(344%) hue-rotate(345deg) brightness(99%) contrast(97%);
+}

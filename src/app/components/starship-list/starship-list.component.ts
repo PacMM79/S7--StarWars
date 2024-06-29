@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { StarshipService } from '../../services/starship.service';
@@ -24,6 +24,8 @@ export class StarshipListComponent {
   }
 
   loadStarships() {
+    if (this.loading) return;
+
     this.loading = true;
     this.service.getStarshipsList(this.currentPage).subscribe({
       next: (response: StarshipList) => {
@@ -42,8 +44,9 @@ export class StarshipListComponent {
     });
   }
 
-  onViewMore() {
-    if (this.next) {
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100 && this.next && !this.loading) {
       this.currentPage++;
       this.loadStarships();
     }

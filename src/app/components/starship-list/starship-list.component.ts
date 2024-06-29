@@ -37,7 +37,7 @@ export class StarshipListComponent {
         this.loading = false;
       },
       error: () => {
-        this.loading = true;
+        this.loading = false;
       },
     });
   }

@@ -63,7 +63,7 @@ export class RegisterComponent {
     const credentials = this.loginForm.value;
 
     this.authService.register(credentials).subscribe({
-      next: (data) => {
+      next: () => {
         this.errorMessage = '';
         this.router.navigate(['/']);
       },

@@ -13,15 +13,15 @@
     </div>
     @if (errorMessage) {
     <div>
-      <p class="error p-3 text-center">{{ errorMessage }}</p>
+      <p class="error p-0 text-center">{{ errorMessage }}</p>
     </div>
     }
-    <div class="p-4">
+    <div class="p-3">
       <button type="submit" class="btn btn-light">Login</button>
     </div>
 
   </form>
-  <div class="m-4 text-center">
+  <div class="m-3 text-center">
     New user? Please, register
     <a class="underline" [routerLink]="['/register']"> here</a>
   </div>

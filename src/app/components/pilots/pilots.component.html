@@ -1,0 +1,17 @@
+<h2 class="mt-5 text-center"><b>PILOTS</b></h2>
+<div class="d-flex justify-content-center mb-5">
+  @if (pilotsData$ | async; as pilots) { 
+    <div class="row justify-content-center">
+      @for (pilot of pilots; track $index) {
+        <div class="card m-3 p-0 pilots">
+          <img class="img-fluid" [src]="getPicture(pilot.url)" alt="{{ pilot.name }} photo" />
+          <div class="text-center p-2">
+            {{ pilot.name.toLocaleUpperCase() }}
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <h6 class="p-3">No Pilots Available.</h6>
+  }
+</div>

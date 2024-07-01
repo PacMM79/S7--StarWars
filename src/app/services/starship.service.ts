@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { StarshipList, Starship } from '../interfaces/starship';
+import { Observable, combineLatest } from 'rxjs';
+import { StarshipList, Starship, Pilot } from '../interfaces/starship';
 
 @Injectable({
   providedIn: 'root',
@@ -17,5 +17,13 @@ export class StarshipService {
 
   getStarshipById(id: string): Observable<Starship> {
     return this.http.get<Starship>(`https://swapi.py4e.com/api/starships/${id}/`);
+  }
+
+  getPilotsDetails(pilotUrls: string[]): Observable<Pilot[]> {
+    const pilotDetails$: Observable<Pilot>[] = [];
+    for (const pilotUrl of pilotUrls) {
+      pilotDetails$.push(this.http.get<Pilot>(pilotUrl));
+    }
+    return combineLatest(pilotDetails$);
   }
 }

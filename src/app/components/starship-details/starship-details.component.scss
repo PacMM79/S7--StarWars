@@ -32,3 +32,11 @@ button {
     border-radius: 20px;
     color: #fff;
 }
+
+.starship {
+  transition: transform 0.5s ease;
+}
+
+.starship:hover {
+  transform: scale(1.1);
+}

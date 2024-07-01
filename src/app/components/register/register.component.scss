@@ -1,0 +1,21 @@
+button {
+  background-color: #000;
+  border: 1px solid #fade4b;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.card {
+  background-color: rgba(34, 34, 34, 0.5);
+  color: white;
+}
+
+a,
+.error,
+.invalid-feedback {
+  color:#fade4b
+}
+
+a:hover {
+  color: #d3d4d5;
+}

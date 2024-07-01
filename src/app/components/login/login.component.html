@@ -1,0 +1,29 @@
+<div class="card container-fluid col-8 col-md-7 col-lg-5 col-xl-4 col-xxl-3 mt-5">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <h2 class="text-center mt-3">LOGIN</h2>
+    <div class="form-group p-3">
+      <label for="email">Email:</label>
+      <input type="text" formControlName="email" id="emailInput" class="form-control" required />
+      <div class="invalid-feedback">Please, add your email.</div>
+    </div>
+    <div class="form-group p-3">
+      <label for="password">Password:</label>
+      <input type="password" formControlName="password" id="passInput" class="form-control" required />
+      <div class="invalid-feedback">Please, add your password.</div>
+    </div>
+    @if (errorMessage) {
+    <div>
+      <p class="error p-3 text-center">{{ errorMessage }}</p>
+    </div>
+    }
+    <div class="p-4">
+      <button type="submit" class="btn btn-light">Login</button>
+    </div>
+
+  </form>
+  <div class="m-4 text-center">
+    New user? Please, register
+    <a class="underline" [routerLink]="['/register']"> here</a>
+  </div>
+
+</div>

@@ -2,7 +2,7 @@
   <h1 class="p-3"><b>STARSHIPS</b></h1>
   <div *ngFor="let starship of starships; " class="card col-8 col-md-6 col-lg-8 col-xl-8 col-xxl-6">
     <a [routerLink]="['/starship', starship.url.split('/').slice(-2, -1)[0]]">
-      <div class="card-title pt-3 mb-0">
+      <div class="card-title pt-0 mb-0">
         <div class="row">
           <div class="col-12 col-lg-8 align-content-center">
             <h1 class="card-title text-center mb-0"><b>{{ starship.name }}</b></h1>

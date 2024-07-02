@@ -1,10 +1,16 @@
 <div class="card-body shiplist">
-    <h1 class="wellcome p-3"><b>WELLCOME {{ username$ | async }}!</b></h1>
-
-    <div class="pb-1" style="left: 0; width: 40%; height: 350px; padding-bottom: 56.25%;">
-        <iframe src="https://secure.disney.com/embed/4fb999d9ed538b32908cee25?domain=www.starwars.com"
-            style="top: 0; left: 0; width: 100%; height: 100%; position: relative; border: 0;" allowfullscreen
-            scrolling="no" allow="encrypted-media;"></iframe>
-    </div>
-
+  <h1 class="wellcome p-2"><b>WELLCOME {{ username$ | async }}!</b></h1>
+  <div class="text-center">
+    <h5 *ngIf="!(isLoggedIn$ | async)" class="m-2">
+      Please, <a href="/login"><b>Login</b></a> into your account to view Starships List or <a
+        href="/register"><b>Signup</b></a> if you are a new User.</h5>
+    <a *ngIf="!(isLoggedIn$ | async)" href="/login"><button class="btn btn-light m-2">Login</button></a>
+    <a *ngIf="isLoggedIn$ | async" (click)="logout()" href="/home"><button class="btn btn-light m-2">Logout</button></a>
+    <a *ngIf="!(isLoggedIn$ | async)" href="/register"><button class="btn btn-light m-2">Signup</button></a>
+  </div>
+  <div class="pb-1" style="left: 0; width: 40%; height: 350px; padding-bottom: 56.25%;">
+    <iframe src="https://secure.disney.com/embed/4fb999d9ed538b32908cee25?domain=www.starwars.com"
+      style="top: 0; left: 0; width: 100%; height: 100%; position: relative; border: 0;" allowfullscreen scrolling="no"
+      allow="encrypted-media;"></iframe>
+  </div>
 </div>

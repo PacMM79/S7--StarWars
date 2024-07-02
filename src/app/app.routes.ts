@@ -7,7 +7,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { authGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
-    { path: 'home', component: HomeComponent, canActivate: [authGuard] },
+    { path: 'home', component: HomeComponent },
     { path: 'starships', component: StarshipListComponent, canActivate: [authGuard] },
     { path: 'starship/:id', component: StarshipDetailsComponent, canActivate: [authGuard] },
     { path: '', redirectTo: '/home', pathMatch: 'full' },

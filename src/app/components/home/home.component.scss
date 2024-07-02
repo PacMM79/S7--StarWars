@@ -8,3 +8,21 @@
 .wellcome {
   text-transform: uppercase;
 }
+
+button {
+  background-color: #fade4b;
+  border: 1px solid #fade4b;
+  border-radius: 20px;
+  color: #000;
+  font-weight: 800;
+  font-size: large;
+}
+
+a {
+  color:#fade4b;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #d3d4d5;
+}

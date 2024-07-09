@@ -2,30 +2,37 @@
   <form [formGroup]="loginForm" (ngSubmit)="register()">
     <h2 class="text-center mt-3">SIGNUP</h2>
     <div class="form-group p-3">
-      <label for="emailInput">Email:</label>
-      <input type="email" formControlName="email" id="emailInput" class="form-control" required />
-      <div class="invalid-feedback">Please, add a valid email.</div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" class="form-control">
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+        <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</span>
+        <span *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format</span>
+      </div>
     </div>
+
     <div class="form-group p-3">
-      <label for="userInput">Username:</label>
-      <input type="text" formControlName="username" id="userInput" class="form-control" required />
-      <div class="invalid-feedback">Please, add a username.</div>
+      <label for="username">Username:</label>
+      <input id="username" formControlName="username" class="form-control">
+      <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="error">
+        <span *ngIf="loginForm.get('username')?.errors?.['required']">Username is required</span>
+      </div>
     </div>
+
     <div class="form-group p-3">
-      <label for="passInput">Password:</label>
-      <input type="password" formControlName="password" id="passInput" class="form-control" required />
-      <div class="invalid-feedback">Please, add a password.</div>
+      <label for="password">Password:</label>
+      <input id="password" formControlName="password" type="password" class="form-control">
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+        <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</span>
+      </div>
     </div>
-    @if (errorMessage) {
-    <div class="p-0 text-center">
-      <p class="error p-2">{{ errorMessage }}</p>
-    </div>
-    }
+
     <div class="p-3">
       <button type="submit" class="btn btn-light">
         Register
       </button>
     </div>
+    <div *ngIf="errorMessage" class="error-message" class="error p-0 text-center">{{ errorMessage }}</div>
+
   </form>
   <div class="m-3 text-center">
     Already registered? Please, login

@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
 
@@ -34,32 +34,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    let errors = 0;
-    let emailInput = <HTMLInputElement>document.getElementById("emailInput");
-    let passInput = <HTMLInputElement>document.getElementById("passInput");
-
-    if (!emailInput.value) {
-      emailInput.classList.add('is-invalid');
-      errors++;
-    } else {
-      emailInput.classList.remove('is-invalid');
-    }
-
-    if (!passInput.value) {
-      passInput.classList.add('is-invalid');
-      errors++;
-    } else {
-      passInput.classList.remove('is-invalid');
-    }
-
-    if (this.loginForm.invalid && errors > 0) {
+    if (this.loginForm.invalid) {
+      this.errorMessage = 'Please check all required fields';
+      this.loginForm.markAllAsTouched();
       return;
     }
 
     const credentials = this.loginForm.value;
 
     this.authService.login(credentials).subscribe({
-      next: (data) => {
+      next: () => {
         this.errorMessage = '';
         this.router.navigate(['/']);
       },
